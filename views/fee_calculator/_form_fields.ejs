@@ -5,7 +5,15 @@
 
 <div>
     <label>Rent Amount:</label>
-    <input type="number" name="rent" min="295" step=".01">
+    <input type="number" name="rent" step=".01">
+</div>
+
+<div>
+    <label>Is the rent payments montlhy or weekly?</label>
+    <input type="radio" name="rentType" value="1" checked>
+    <label for="rent-monthly">Monthly</label>
+    <input type="radio" name="rentType" value="0">
+    <label for="rent-weekly">Weekly</label>
 </div>
 
 <div>
@@ -31,5 +39,5 @@
 
 <div>
     <label>Please enter the tenancy end date:</label>
-    <input type="date" name="end_date">
+    <input type="date" name="end_date" >
 </div>

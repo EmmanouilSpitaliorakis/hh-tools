@@ -44,14 +44,14 @@ router.post("/", async (req, res)=>{
         start_date: new Date(req.body.start_date),
         end_date: new Date(req.body.end_date),
         isInstallments: req.body.isInstallments,
-        type: req.body.type
+        type: req.body.type,
+        rentType: req.body.rentType
     }
     
- 
     var reference = applicant.reference
     var months = monthCalculation(applicant.start_date, applicant.end_date)
     var initialAmount = initialPayment(applicant.isInstallments)
-    var rent = minimumLengthRent(months, applicant.rent)
+    var rent = minimumLengthRent(months, applicant.rent, applicant.rentType)
     var discount = discountCalculation(applicant.type, rent)
     var feeAfterDiscount = minimumFee(rent, discount).feeAfterDiscount
     var fee = minimumFee(rent, discount).fee
@@ -60,19 +60,19 @@ router.post("/", async (req, res)=>{
     var feeLeft = installmentsCalculation(applicant.isInstallments, fee, months, initialAmount).feeLeft
     var installmentAmount = installmentsCalculation(applicant.isInstallments, fee, months, initialAmount).installmentAmount
     
-    console.log("Type: "+applicant.type)
-    console.log("Is installments: " + applicant.isInstallments)
-    console.log("Reference: "+reference)
-    console.log("Months: " + months)
-    console.log("Initial Amount: " + initialAmount)
-    console.log("Rent: "+rent)
-    console.log("discount: "+discount)
-    console.log("Fee after Discount: "+feeAfterDiscount)
-    console.log("Fee: "+fee)
-    console.log("amount increased: "+amountIncreased)
-    console.log("Fee: "+fee)
-    console.log("Fee left: "+feeLeft)
-    console.log("Installment Amount :" + installmentAmount)
+    // console.log("Type: "+applicant.type)
+    // console.log("Is installments: " + applicant.isInstallments)
+    // console.log("Reference: "+reference)
+    // console.log("Months: " + months)
+    // console.log("Initial Amount: " + initialAmount)
+    // console.log("Rent: "+rent)
+    // console.log("discount: "+discount)
+    // console.log("Fee after Discount: "+feeAfterDiscount)
+    // console.log("Fee: "+fee)
+    // console.log("amount increased: "+amountIncreased)
+    // console.log("Fee: "+fee)
+    // console.log("Fee left: "+feeLeft)
+    // console.log("Installment Amount :" + installmentAmount)
 
 
     // sheet.cell(4, 2).string("Tenancy Start Date:")
@@ -141,7 +141,13 @@ function initialPayment(isInstallments){
 }
 
 // Calculating the rent if the tenancy is between 3 and 6 months.
-function minimumLengthRent(months, rent){
+function minimumLengthRent(months, rent, rentType){
+    if (rentType == "1"){
+        rent = rent
+    }else{
+        rent = rent * 4.333
+
+    }
     if (months >= 3 && months <=6){
         newRent = rent / 2
     }else if (months > 12 || months < 3 ){
