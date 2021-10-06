@@ -6,7 +6,7 @@ const feeCalculator = require("./routes/fee_calculator")
 
 const app = express()
 
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8080;
 
 app.set("view engine", "ejs")
 app.set("views", __dirname + "/views")

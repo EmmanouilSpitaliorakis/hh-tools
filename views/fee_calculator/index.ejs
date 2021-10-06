@@ -3,3 +3,40 @@
     <%- include("_form_fields")%>
     <button type="submit">Calculate</button>
 </form>
+
+<br>
+<% if (locals.reference) {%>
+    <h2>Output</h2>
+    <div>
+        <label>Reference Number:</label>
+        <%=reference%>
+    </div>
+    <div>
+        <label>Total Rent Amount: £</label>
+        <%=(Number(rent).toFixed(2))%>
+    </div>
+    <div>
+        <label">Upfront payment (12 months max): £</label>
+        <%= Number(feeAfterDiscount).toFixed(2)%>
+    </div>
+    <div>
+        <label>Fee after installments Increase: £</label>
+        <%= Number(fee).toFixed(2)%>
+    </div>
+    <div>
+        <label>First Payment: £</label>
+        <%= Number(initialAmount).toFixed(2)%>
+    </div>
+    <div>
+        <label>Fee to be split monthly: £</label>
+        <%= Number(feeLeft).toFixed(2)%>
+    </div>
+    <div>
+        <label>Subsequent (Monthly) payments: £</label>
+        <%= Number(installmentAmount).toFixed(2)%>
+    </div>
+    <div>
+        <label>Number of Installments:</label>
+        <%= months%>
+    </div>
+    <% } %>
