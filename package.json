@@ -1,0 +1,23 @@
+{
+  "name": "hh-tools",
+  "version": "0.0.1",
+  "description": "This is the server side of the hh-tool website.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Emmanouil Spitaliorakis",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.6",
+    "excel4node": "^1.2.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
