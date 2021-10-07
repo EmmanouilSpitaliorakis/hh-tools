@@ -3,6 +3,7 @@ const router = express.Router()
 const path = require("path")
 const excel = require("excel4node")
 const { colorScheme } = require("excel4node/distribution/lib/types")
+const { start } = require("repl")
 
 const workbook = new excel.Workbook()
 const sheet = workbook.addWorksheet("Fee Calculation")
@@ -50,6 +51,7 @@ router.post("/", async (req, res)=>{
     
     var reference = applicant.reference
     var months = monthCalculation(applicant.start_date, applicant.end_date)
+    var start_date = applicant.start_date
     var initialAmount = initialPayment(applicant.isInstallments)
     var rent = minimumLengthRent(months, applicant.rent, applicant.rentType)
     var discount = discountCalculation(applicant.type, rent)
@@ -104,6 +106,7 @@ router.post("/", async (req, res)=>{
     // await new Promise(r => setTimeout(r, 125));
     // res.redirect("fee_calculator/api/download")
     res.render("fee_calculator", {
+        start_date: start_date,
         reference: reference,
         rent: rent,
         feeAfterDiscount: feeAfterDiscount,

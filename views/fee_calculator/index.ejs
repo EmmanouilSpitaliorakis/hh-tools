@@ -8,6 +8,10 @@
 <% if (locals.reference) {%>
     <h2>Output</h2>
     <div>
+        <label>Tenancy Start Date:</label>
+        <%= start_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%>
+    </div>
+    <div>
         <label>Reference Number:</label>
         <%=reference%>
     </div>
