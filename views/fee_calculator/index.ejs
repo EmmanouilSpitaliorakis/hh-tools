@@ -7,8 +7,13 @@
 <br>
 <% if (locals.reference) {%>
     <h2>Output</h2>
+    <div>
         <label>Reference Number:</label>
         <%=reference%>
+    </div>
+    <div>
+        <label>Email:</label>
+        <%=email%>
     </div>
     <div>
         <label>Total Rent Amount: £</label>
@@ -40,7 +45,7 @@
     </div>
     <br>
     <div>
-        <label>Initial Payment Date (if past to be paid immediately):</label>
+        <label>Initial Payment Date <span>(if past to be paid immediately)</span>:</label>
         <%= start_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%>
     </div>
     <div>

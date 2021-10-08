@@ -17,7 +17,8 @@ var applicant = {
     start_date: Date,
     end_date: Date,
     isInstallments: String,
-    type: String
+    type: String,
+    email: String
 }
 
 router.get("/", (req, res) =>{
@@ -46,10 +47,12 @@ router.post("/", async (req, res)=>{
         end_date: new Date(req.body.end_date),
         isInstallments: req.body.isInstallments,
         type: req.body.type,
-        rentType: req.body.rentType
+        rentType: req.body.rentType,
+        email: req.body.email
     }
     
     var reference = applicant.reference
+    var email = applicant.email
     var months = monthCalculation(applicant.start_date, applicant.end_date)
     var start_date = applicant.start_date
     var initialAmount = initialPayment(applicant.isInstallments)
@@ -114,7 +117,8 @@ router.post("/", async (req, res)=>{
         initialAmount: initialAmount,
         feeLeft: feeLeft,
         installmentAmount: installmentAmount,
-        months: months
+        months: months,
+        email: email
     })
 })
 
