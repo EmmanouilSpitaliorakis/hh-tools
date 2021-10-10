@@ -11,6 +11,7 @@ const port = process.env.PORT || 8080;
 app.set("view engine", "ejs")
 app.set("views", __dirname + "/views")
 app.set("layout", "layouts/layout")
+app.use("/styles", express.static(__dirname + "/static/styles"))
 app.use(express.urlencoded({limit: "10mb", extended: false}))
 app.use(expressLayouts)
 app.use(express.static("public"))

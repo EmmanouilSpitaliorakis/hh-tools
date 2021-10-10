@@ -1,52 +1,62 @@
-<h2>Fee Calculator</h2>
 <form action="/fee_calculator" method="POST">
     <%- include("_form_fields")%>
-    <button type="submit">Calculate</button>
+    <!-- <button type="submit">Calculate</button> -->
 </form>
 
-<br>
 <% if (locals.reference) {%>
-    <h2>Output</h2>
-    <div>
-        <label>Reference Number:</label>
-        <%=reference%>
-    </div>
-    <div>
-        <label>Email:</label>
-        <%=email%>
-    </div>
-    <div>
-        <label>Total Rent Amount: £</label>
-        <%=(Number(rent).toFixed(2))%>
-    </div>
-    <div>
-        <label">Upfront payment (12 months max): £</label>
-        <%= Number(feeAfterDiscount).toFixed(2)%>
-    </div>
-    <div>
-        <label>Fee after installments Increase: £</label>
-        <%= Number(fee).toFixed(2)%>
-    </div>
-    <div>
-        <label>First Payment: £</label>
-        <%= Number(initialAmount).toFixed(2)%>
-    </div>
-    <div>
-        <label>Fee to be split monthly: £</label>
-        <%= Number(feeLeft).toFixed(2)%>
-    </div>
-    <div>
-        <label>Subsequent (Monthly) payments: £</label>
-        <%= Number(installmentAmount).toFixed(2)%>
-    </div>
-    <div>
-        <label>Number of Installments:</label>
-        <%= months%>
-    </div>
-    <br>
-    <div>
-        <label>Initial Payment Date <span>(if past to be paid immediately)</span>:</label>
-        <%= start_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%>
-    </div>
-    <div>
+    <div class="py-1.5 mt-12 max-w-3xl mx-auto bg-white border-2 border-gray-400 rounded-lg">
+        <div class=" py-1 px-3 font-medium text-gray-700">
+          <h2>Output</h2>
+        </div>
+        
+        <div class="my-4 mx-2">
+          <label>Reference Number:</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= reference %></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">Email:</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%=email%></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">Total Rent Amount: £</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(rent).toFixed(2) %></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">Upfront payment (12 months max): £</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(feeAfterDiscount).toFixed(2) %></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">Fee after installments Increase: £</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(fee).toFixed(2) %></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">First Payment: £</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(initialAmount).toFixed(2) %></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">Fee to be split monthly: £</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(feeLeft).toFixed(2) %></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">Subsequent (Monthly) payments: £</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(installmentAmount).toFixed(2) %></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">Number of Installments:</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= months %></span>
+        </div>
+          
+        <div class="my-3.5 mx-2">
+          <labelclass="mr-1 text-gray-700">Initial Payment Date <span class="px-1.5 py-1.5 bg-red-100 border border-red-400 text-red-700 rounded relative font-medium">(if past to be paid immediately)</span>:</labelclass>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= start_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%></span>
+        </div>
+      </div>
     <% } %>

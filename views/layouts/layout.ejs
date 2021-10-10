@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4FEKEY5DY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <head>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4FEKEY5DY"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        gtag('config', 'G-H4FEKEY5DY');
-    </script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HH Internal Tools</title>
-</head>
-<body>
-    <%- include("../partials/header.ejs")%>
-    <%- include("../partials/errorMessage.ejs")%>
-    <%- body %>
-</body>
+            gtag('config', 'G-H4FEKEY5DY');
+        </script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/style.css"/>
+        <title>HH Internal Tools</title>
+    </head>
+    <body class="bg-gray-100">
+        <%- include("../partials/header.ejs")%>
+        <%- include("../partials/errorMessage.ejs")%>
+        <%- body %>
+    </body>
 </html>

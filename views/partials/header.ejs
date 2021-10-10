@@ -1,8 +1,61 @@
 <header>
-    <nav>
-        <a href="/">HH Tools</a>
-        <ul>
-            <li><a href="/fee_calculator">Fee Calculator</a></li>
-        </ul>
-    </nav>
+    <!-- navbar goes here -->
+<nav class="bg-gray-300">
+    <div class="max-w-7xl mx-auto px-5"> <!-- Div for all of the nav bar.  -->
+      <div class="flex justify-between"> <!-- Internal div in order to align the logo, the primary and secondary nav.  -->
+        <div class="flex space-x-4 items-center"> <!-- Div to separate the logo and the priamry nav from the secondary nav. -->
+          <!-- logo -->
+          <div class="h-20"> <!-- Div for the logo  -->
+            <a href="/">
+              <svg class="ph-16 w-32" version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 77" width="177" height="80">
+                <title>hhLogo</title>
+                <defs>
+                  <image  width="170" height="77" id="img1" href="data:image/png;base64,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"/>
+                </defs>
+                <style>
+                  tspan { white-space:pre }
+                </style>
+                <use id="Background" href="#img1" x="0" y="0" />
+              </svg>
+            </a>
+          </div>
+  
+          <!-- primary nav -->
+          <div class="hidden md:flex flex items-center space-x-3"> <!-- Div fro the primary nav  -->
+            <a href="/fee_calculator" class=" py-3 px-3 bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-900 rounded-lg transition duration-300">Fee Calculator</a>
+            <a href="#" class=" py-3 px-3 bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-900 rounded-lg transition duration-300">Team Rota</a>
+          </div>
+        </div>  
+  
+        <!-- secondary nav -->
+        <div class="hidden md:flex flex items-center space-x-1"> <!-- Div for the secondary nav  -->
+          <a href="#" class=" py-3 px-3 bg-gray-100 hover:bg-gray-400 text-gray-600 hover:text-gray-900 rounded-lg transition duration-300">Log Out</a>     
+        </div>
+  
+        <!-- mobile button -->
+        <div class="md:hidden flex items-center"> <!-- Div for the mobile button -->
+          <button class="mobile-menu-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+  
+      <!-- mobile menu -->
+      <div class="mobile-menu hidden md:hidden"> <!-- Div for the modily menu  -->
+        <a href="/fee_calculator"class="block py-2 px-4 text-sm hover:bg-gray-400 rounded-lg">Fee Calculator</a>
+        <a href="#"class="block py-2 px-4 text-sm hover:bg-gray-400 rounded-lg">Team Rota</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    //add event listeners
+    btn.addEventListener("click", ()=>{
+    menu.classList.toggle("hidden");
+    });
+  </script>
 </header>

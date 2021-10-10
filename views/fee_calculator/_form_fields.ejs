@@ -1,48 +1,56 @@
-<div>
-    <label>Reference Number:</label>
-    <input type="text", name="reference">
-</div>
+<div class="py-1.5 mt-12 max-w-3xl mx-auto bg-white border-2 border-gray-400 rounded-lg">
+    <div class=" py-1 px-3 font-medium text-gray-700">
+      <h2>Fee Calculator</h2>
+    </div>
+    <div class="my-1.5 mx-2">
+      <label class="mr-1 text-gray-700">Reference Number:</label>
+      <input type="text" placeholder="AS-123456" name="reference" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
+    </div>
 
-<div>
-    <label>Email:</label>
-    <input type="email", name="email">
-</div>
+    <div class="my-1.5 mx-2">
+      <label class="mr-1 text-gray-700">Email:</label>
+      <input type="email" placeholder="email@domain.com" name="email" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
+    </div>
 
-<div>
-    <label>Rent Amount:</label>
-    <input type="number" name="rent" step=".01">
-</div>
+    <div class="my-1.5 mx-2">
+      <label class="mr-1 text-gray-700">Rent Amount:</label>
+      <input type="number" placeholder="450" name="rent" step=".01" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
+    </div>
 
-<div>
-    <label>Is the rent payments montlhy or weekly?</label>
-    <input type="radio" name="rentType" value="1" checked>
-    <label for="rent-monthly">Monthly</label>
-    <input type="radio" name="rentType" value="0">
-    <label for="rent-weekly">Weekly</label>
-</div>
+    <div class="my-1.5 mx-2">
+      <label class="mr-1 text-gray-700">Is the rent payments montlhy or weekly?</label>
+      <input type="radio" name="rentType" value="1" checked>
+      <label for="rent-monthly" class="text-gray-700">Monthly</label>
+      <input type="radio" name="rentType" value="0">
+      <label for="rent-weekly" class="text-gray-700">Weekly</label>
+    </div>
 
-<div>
-    <label>Does the applicant pay in installments?</label>
-    <input type="radio" name="isInstallments" value="1" checked>
-    <label for="installments-positive">Yes</label>
-    <input type="radio" name="isInstallments" value="0">
-    <label for="installments-negative">No</label>
-</div>
+    <div class="my-1.5 mx-2">
+      <label class="mr-1 text-gray-700">Does the applicant pay in installments?</label>
+      <input type="radio" name="isInstallments" value="1" checked>
+      <label for="installments-positive" class="text-gray-700">Yes</label>
+      <input type="radio" name="isInstallments" value="0">
+      <label for="installments-negative" class="text-gray-700">No</label>
+    </div>
 
-<div>
-    <label>Is the applicant a student?</label>
-    <input type="radio" name="type" value="1" checked>
-    <label for="type-positive">Yes</label>
-    <input type="radio" name="type" value="0">
-    <label for="type-negative">No</label>
-</div>
+    <div class="my-1.5 mx-2">
+      <label class="mr-1 text-gray-700">Is the applicant a student?</label>
+      <input type="radio" name="type" value="1" checked>
+      <label for="type-positive" class="text-gray-700">Yes</label>
+      <input type="radio" name="type" value="0">
+      <label for="type-negative" class="text-gray-700">No</label>
+    </div>
 
-<div>
-    <label>Please enter the tenancy start date:</label>
-    <input type="date" name="start_date">
-</div>
+    <div class="my-1.5 mx-2">
+      <label class="mr-1 text-gray-700">Please enter the tenancy start date:</label>
+      <input type="date" name="start_date" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
+    </div>
 
-<div>
-    <label>Please enter the tenancy end date:</label>
-    <input type="date" name="end_date">
-</div>
+    <div class="my-1.5 mx-2">
+      <label class="mr-1 text-gray-700">Please enter the tenancy end date:</label>
+      <input type="date" name="end_date" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
+    </div>
+    <div class="flex justify-center">
+        <button type="submit" class="m-2 px-4 py-2 text-gray-700 bg-gray-300 rounded-lg">Calculate</button>
+      </div>
+  </div>
