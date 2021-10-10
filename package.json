@@ -20,6 +20,7 @@
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "nodemon": "^2.0.13"
   }
 }
