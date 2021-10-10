@@ -19,36 +19,36 @@
 
     <div class="my-1.5 mx-2">
       <label class="mr-1 text-gray-700">Is the rent payments montlhy or weekly?</label>
-      <input type="radio" name="rentType" value="1" class="form-radio text-indigo-600 border-2 border-indigo-600" checked>
+      <input id="rent-monthly" type="radio" name="rentType" value="1" class="form-radio text-indigo-600 border-2 border-indigo-600" checked>
       <label for="rent-monthly" class="text-gray-700">Monthly</label>
-      <input type="radio" name="rentType" value="0" class="form-radio text-yellow-400 border-2 border-yellow-400">
+      <input id="rent-weekly" type="radio" name="rentType" value="0" class="form-radio text-yellow-400 border-2 border-yellow-400">
       <label for="rent-weekly" class="text-gray-700">Weekly</label>
     </div>
 
     <div class="my-1.5 mx-2">
       <label class="mr-1 text-gray-700">Does the applicant pay in installments?</label>
-      <input type="radio" name="isInstallments" value="1" class="form-radio text-indigo-600 border-2 border-indigo-600" checked>
+      <input id="installments-positive" type="radio" name="isInstallments" value="1" class="form-radio text-indigo-600 border-2 border-indigo-600" checked>
       <label for="installments-positive" class="text-gray-700">Yes</label>
-      <input type="radio" name="isInstallments" value="0" class="form-radio text-yellow-400 border-2 border-yellow-400">
+      <input id="installments-negative" type="radio" name="isInstallments" value="0" class="form-radio text-yellow-400 border-2 border-yellow-400">
       <label for="installments-negative" class="text-gray-700">No</label>
     </div>
 
     <div class="my-1.5 mx-2">
       <label class="mr-1 text-gray-700">Is the applicant a student?</label>
-      <input type="radio" name="type" value="1" class="form-radio text-indigo-600 border-2 border-indigo-600" checked>
+      <input id="type-positive" type="radio" name="type" value="1" class="form-radio text-indigo-600 border-2 border-indigo-600" checked>
       <label for="type-positive" class="text-gray-700">Yes</label>
-      <input type="radio" name="type" value="0" class="form-radio text-yellow-400 border-2 border-yellow-400">
+      <input id="type-negative" type="radio" name="type" value="0" class="form-radio text-yellow-400 border-2 border-yellow-400">
       <label for="type-negative" class="text-gray-700">No</label>
     </div>
 
     <div class="my-1.5 mx-2">
-      <label class="mr-1 text-gray-700">Please enter the tenancy start date:</label>
-      <input type="date" name="start_date" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
+      <label for="start-date" class="mr-1 text-gray-700">Please enter the tenancy start date:</label>
+      <input id="start-date" type="date" name="start_date" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
     </div>
 
     <div class="my-1.5 mx-2">
-      <label class="mr-1 text-gray-700">Please enter the tenancy end date:</label>
-      <input type="date" name="end_date" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
+      <label for="end-date" class="mr-1 text-gray-700">Please enter the tenancy end date:</label>
+      <input id="end-date" type="date" name="end_date" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md">
     </div>
     <div class="flex justify-center">
         <button type="submit" class="m-2 px-4 py-2 text-gray-700 bg-gray-300 rounded-lg">Calculate</button>
