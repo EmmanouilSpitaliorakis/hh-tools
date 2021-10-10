@@ -15,47 +15,47 @@
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">Email:</label>
+          <label class="mr-1 text-gray-700">Email:</label>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%=email%></span>
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">Total Rent Amount: £</label>
+          <label class="mr-1 text-gray-700">Total Rent Amount: £</label>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(rent).toFixed(2) %></span>
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">Upfront payment (12 months max): £</label>
+          <label class="mr-1 text-gray-700">Upfront payment (12 months max): £</label>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(feeAfterDiscount).toFixed(2) %></span>
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">Fee after installments Increase: £</label>
+          <label class="mr-1 text-gray-700">Fee after installments Increase: £</label>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(fee).toFixed(2) %></span>
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">First Payment: £</label>
+          <label class="mr-1 text-gray-700">First Payment: £</label>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(initialAmount).toFixed(2) %></span>
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">Fee to be split monthly: £</label>
+          <label class="mr-1 text-gray-700">Fee to be split monthly: £</label>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(feeLeft).toFixed(2) %></span>
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">Subsequent (Monthly) payments: £</label>
+          <label class="mr-1 text-gray-700">Subsequent (Monthly) payments: £</label>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= Number(installmentAmount).toFixed(2) %></span>
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">Number of Installments:</label>
+          <label class="mr-1 text-gray-700">Number of Installments:</label>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= months %></span>
         </div>
           
         <div class="my-3.5 mx-2">
-          <labelclass="mr-1 text-gray-700">Initial Payment Date <span class="px-1.5 py-1.5 bg-red-100 border border-red-400 text-red-700 rounded relative font-medium">(if past to be paid immediately)</span>:</labelclass>
+          <label class="mr-1 text-gray-700">Initial Payment Date <span class="px-1.5 py-1.5 bg-red-100 border border-red-400 text-red-700 rounded relative font-medium">if past to be paid immediately</span>:</labelclass>
           <span class="px-1.5 py-1.5 border-2 border-gray-400 rounded-md"><%= start_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%></span>
         </div>
       </div>
