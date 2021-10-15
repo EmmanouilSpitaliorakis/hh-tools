@@ -3,7 +3,6 @@ const router = express.Router()
 const path = require("path")
 const excel = require("excel4node")
 const { colorScheme } = require("excel4node/distribution/lib/types")
-const { start } = require("repl")
 
 const workbook = new excel.Workbook()
 const sheet = workbook.addWorksheet("Fee Calculation")
@@ -66,20 +65,6 @@ router.post("/", async (req, res)=>{
     var feeLeft = installmentsCalculation(applicant.isInstallments, fee, months, initialAmount).feeLeft
     var installmentAmount = installmentsCalculation(applicant.isInstallments, fee, months, initialAmount).installmentAmount
     
-    // console.log("Type: "+applicant.type)
-    // console.log("Is installments: " + applicant.isInstallments)
-    // console.log("Reference: "+reference)
-    // console.log("Months: " + months)
-    // console.log("Initial Amount: " + initialAmount)
-    // console.log("Rent: "+rent)
-    // console.log("discount: "+discount)
-    // console.log("Fee after Discount: "+feeAfterDiscount)
-    // console.log("Fee: "+fee)
-    // console.log("amount increased: "+amountIncreased)
-    // console.log("Fee: "+fee)
-    // console.log("Fee left: "+feeLeft)
-    // console.log("Installment Amount :" + installmentAmount)
-
 
     // sheet.cell(4, 2).string("Tenancy Start Date:")
     // sheet.cell(5, 2).string("Tenancy End Date:")
@@ -109,6 +94,7 @@ router.post("/", async (req, res)=>{
     // workbook.write(file_path)
     // await new Promise(r => setTimeout(r, 125));
     // res.redirect("fee_calculator/api/download")
+    
     res.render("fee_calculator", {
         start_date: start_date,
         reference: reference,
