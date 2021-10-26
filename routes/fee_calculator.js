@@ -54,6 +54,7 @@ router.post("/", async (req, res)=>{
     var email = applicant.email
     var months = monthCalculation(applicant.start_date, applicant.end_date)
     var start_date = applicant.start_date
+    var end_date = applicant.end_date
     var initialAmount = initialPayment(applicant.isInstallments)
     var rent = applicant.rent
     var newRent = minimumLengthRent(months, applicant.rent, applicant.rentType)
@@ -97,6 +98,7 @@ router.post("/", async (req, res)=>{
     
     res.render("fee_calculator", {
         start_date: start_date,
+        end_date: end_date,
         reference: reference,
         rent: rent,
         feeAfterDiscount: feeAfterDiscount,

@@ -2,7 +2,8 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts")
 
 const indexRouter = require("./routes/index")
-const feeCalculator = require("./routes/fee_calculator")
+const feeCalculatorRouter = require("./routes/fee_calculator")
+const rotaRouter = require("./routes/rota")
 
 const app = express()
 
@@ -19,7 +20,8 @@ app.use(express.static("public"))
 
 
 app.use("/", indexRouter)
-app.use("/fee_calculator", feeCalculator)
+app.use("/fee_calculator", feeCalculatorRouter)
+app.use("/rota", rotaRouter)
 
 app.listen(port);
 console.log('\nServer started at http://localhost:' + port);
