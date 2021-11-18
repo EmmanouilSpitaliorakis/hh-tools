@@ -17,7 +17,7 @@
           
         <div class="py-2.5 mx-2">
           <label>Email:</label>
-          <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%=email%></span>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= email %></span>
         </div>
             
         <div class="py-2.5 mx-2">
@@ -32,12 +32,12 @@
 
         <div class="py-2.5 mx-2">
             <label>Start Date:</label>
-            <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= start_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%></span>
+            <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= start_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/') %></span>
           </div>  
             
            <div class="py-2.5 mx-2">
             <label>End Date:</label>
-            <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= end_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%></span>
+            <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= end_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/') %></span>
           </div>  
 
         <div class="py-2.5 px-2.5 mx-2 bg-red-100 border border-red-400 text-red-700 rounded relative font-medium">
