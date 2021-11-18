@@ -1,0 +1,51 @@
+<form action="/depositless" method="POST">
+<%- include("_form_fields")%>
+</form>
+
+<% if (locals.reference) {%>
+    <div class="py-1.5 mt-12 max-w-3xl mx-auto bg-white border-2 border-gray-400 rounded-lg">
+        <div class="my-1.5 px-3 font-medium text-gray-700 flex flex-col items-center">
+          <h2>Output</h2>
+        </div>
+        
+      <div class="flex flex-col items-center">
+        <div>
+        <div class="pt-1.5 pb-2.5 mx-2">
+            <label>Reference Number:</label>
+            <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= reference %></span>
+        </div>
+          
+        <div class="py-2.5 mx-2">
+          <label>Email:</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%=email%></span>
+        </div>
+            
+        <div class="py-2.5 mx-2">
+          <label>Rent:</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md">£<%= Number(rent).toFixed(2) %></span>
+        </div>
+                  
+        <div class="py-2.5 mx-2">
+          <label>Duration:</label>
+          <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= duration %></span>
+        </div>
+
+        <div class="py-2.5 mx-2">
+            <label>Start Date:</label>
+            <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= start_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%></span>
+          </div>  
+            
+           <div class="py-2.5 mx-2">
+            <label>End Date:</label>
+            <span class="px-1.5 py-1.5 border-2 border-gray-400 bg-gray-100 text-gray-800 rounded-md"><%= end_date.toISOString().replace(/T.*/,'').split('-').reverse().join('/')%></span>
+          </div>  
+
+        <div class="py-2.5 px-2.5 mx-2 bg-red-100 border border-red-400 text-red-700 rounded relative font-medium">
+          <label>Installment Amount:</label>
+          <span class="px-1.5 py-1.5 border-2 bg-gray-100 border-red-400 text-red-700  rounded-md">£<%= Number(installmentAmount).toFixed(2) %></span>
+        </div>
+
+        </div>
+        </div>
+      </div>
+<% } %>

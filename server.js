@@ -7,6 +7,7 @@ const indexRouter = require("./routes/index")
 const feeCalculatorRouter = require("./routes/fee_calculator")
 const rotaRouter = require("./routes/rota")
 const loginRouter = require("./routes/login")
+const depositlessRouter = require("./routes/depositless")
 
 const app = express()
 const port = process.env.PORT || 8080;
@@ -35,6 +36,7 @@ app.use("/", indexRouter)
 app.use("/fee_calculator", feeCalculatorRouter)
 app.use("/rota", rotaRouter)
 app.use("/login", loginRouter)
+app.use("/depositless", depositlessRouter)
 
 app.listen(port);
 console.log('\nServer started at http://localhost:' + port);

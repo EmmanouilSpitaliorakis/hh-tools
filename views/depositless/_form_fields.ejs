@@ -1,0 +1,49 @@
+<body class="bg-gray-50">
+  <div class="py-1.5 mt-12 max-w-3xl mx-auto bg-white border-2 border-gray-400 rounded-lg">
+    <div class="py-1 px-3 font-medium text-gray-700 flex flex-col items-center">
+      Depositless
+    </div>
+    <div class=" flex flex-col items-center my-2">
+      <div>
+        <div class="flex flex-col content-start">
+          <div class="my-1.5 mx-2">
+            <label class="mr-1 text-gray-700">Reference Number:</label>
+            <input type="text" placeholder="AS-123456" name="reference" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md" required>
+          </div>
+
+          <div class="my-1.5 mx-2">
+            <label class="mr-1 text-gray-700">Email:</label>
+            <input type="text" placeholder="j.smith@gmail.com" name="email" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md" required>
+          </div>
+
+          <div class="my-1.5 mx-2">
+            <label class="mr-1 text-gray-700">Rent Amount:</label>
+            <input type="number" placeholder="£ 450.75" name="rent" step=".01" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md" required>
+          </div>
+
+          <div class="my-1.5 mx-2">
+            <label class="mr-1 text-gray-700">Is the rent payments montlhy or weekly?</label>
+            <input type="radio" name="rentType" value="1" class="form-radio text-indigo-600 border-2 border-indigo-600" checked>
+            <label for="rent-monthly" class="text-gray-700">Monthly</label>
+            <input type="radio" name="rentType" value="0" class="form-radio text-yellow-400 border-2 border-yellow-400">
+            <label for="rent-weekly" class="text-gray-700">Weekly</label>
+          </div>
+
+          <div class="my-1.5 mx-2">
+            <label class="mr-1 text-gray-700">Please enter the tenancy start date:</label>
+            <input type="date" name="start_date" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md" required>
+          </div>
+
+          <div class="my-1.5 mx-2">
+            <label class="mr-1 text-gray-700">Please enter the tenancy end date:</label>
+            <input type="date" name="end_date" class="px-1 border-2 border-gray-400 hover:border-gray-600 rounded-md" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="flex justify-center">
+      <button type="submit" class="m-2 px-4 py-2 text-gray-700 bg-gray-300 hover:bg-gray-500 hover:text-gray-900 rounded-lg">Calculate</button>
+    </div>
+  </div>
+</body>

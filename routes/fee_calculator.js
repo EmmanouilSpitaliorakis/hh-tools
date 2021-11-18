@@ -5,22 +5,116 @@ const excel = require("excel4node")
 const { colorScheme } = require("excel4node/distribution/lib/types")
 const { isContext } = require("vm")
 
-let islogged = true
-const workbook = new excel.Workbook()
-const sheet = workbook.addWorksheet("Fee Calculation")
+// const workbook = new excel.Workbook()
+// const sheet = workbook.addWorksheet("Fee Calculation")
 
-var file_path
-var reference 
+// var file_path
+// var reference 
 
-var applicant = {
-    reference: String,
-    rent: Number,
-    start_date: Date,
-    end_date: Date,
-    isInstallments: String,
-    type: String,
-    email: String
+// var applicant = {
+//     reference: String,
+//     rent: Number,
+//     start_date: Date,
+//     end_date: Date,
+//     isInstallments: String,
+//     type: String,
+//     email: String
+// }
+
+// Calculating the difference of the months from the dates.
+function monthCalculation(start_date, end_date){
+    const MILL_TO_DAYS = 1000 * 60 * 60 * 24
+    const MONTH_DAY_AVRG = 30.3
+    var timeDifference = end_date - start_date
+    var dayDifference = (timeDifference / MILL_TO_DAYS)
+    var monthDifference = Math.floor(dayDifference / MONTH_DAY_AVRG)
+    
+    if (monthDifference > 12 || monthDifference < 3){
+        monthDifference = 0
+    }
+    return monthDifference
 }
+
+// Deciding if a initial payment is needed.
+function initialPayment(isInstallments){
+    if (isInstallments == "1"){
+        var initialAmount = 75
+    }else{
+        var initialAmount = 0
+    }
+    return initialAmount
+}
+
+// Calculating the rent if the tenancy is between 3 and 6 months.
+function minimumLengthRent(months, rent, rentType){
+    if (rentType == "1"){
+        rent = rent
+    }else{
+        rent = rent * 4.333
+
+    }
+    if (months >= 3 && months <=6){
+        newRent = rent / 2
+    }else if (months > 12 || months < 3 ){
+        newRent = 0
+    }else{
+        newRent = rent
+    }
+    return newRent
+}
+
+// Calculating the discount on the rent if the applicant is a student.
+function discountCalculation(type, rent){
+    if (type == "1"){
+        discountAmount = rent * 0.20
+    }else{
+        discountAmount = rent * 0.00
+    }
+    return discountAmount
+}
+
+// Calculating the minimum fee for the applicant based on their rent and discount if applicable.
+function minimumFee(rent, discount){
+    if (rent - discountAmount < 295){
+        fee = 295
+    }else{
+        fee = rent - discount
+    }
+    feeAfterDiscount = fee
+
+    return {fee, feeAfterDiscount}
+}
+
+
+// Calculating the increase if the applicant will pay in installments.
+function installmentsIncrease(isInstallments, fee, isVonder){
+    var INSTALLMENTS_RATE = 0.15
+    if (isVonder == "1"){
+        INSTALLMENTS_RATE = 0.00
+    }
+    if (isInstallments == "1"){
+        var newFee = fee + (fee * INSTALLMENTS_RATE)
+        var amountIncreased = fee * INSTALLMENTS_RATE
+    }else{
+        var newFee = fee
+        var amountIncreased = 0
+    }
+    return {newFee, amountIncreased}
+}
+
+
+// Calculating the installments
+function installmentsCalculation(isInstallments, fee, months, initialPayment){
+    if (isInstallments == "1"){
+            var feeLeft = fee - initialPayment
+            var installmentAmount = feeLeft / months
+    }else{
+        var feeLeft = fee
+        var installmentAmount = feeLeft
+    }
+    return {feeLeft, installmentAmount}
+}
+
 
 router.get("/", (req, res) =>{
 
@@ -42,7 +136,7 @@ router.get("/api/download", async (req, res)=>{
     }
 })
 
-router.post("/", async (req, res)=>{
+router.post("/", (req, res)=>{
     const applicant = {
         reference: req.body.reference,
         rent: req.body.rent,
@@ -119,100 +213,6 @@ router.post("/", async (req, res)=>{
 })
 
 
-// Calculating the difference of the months from the dates.
-function monthCalculation(start_date, end_date){
-    const MILL_TO_DAYS = 1000 * 60 * 60 * 24
-    const MONTH_DAY_AVRG = 30.3
-    var timeDifference = end_date - start_date
-    var dayDifference = (timeDifference / MILL_TO_DAYS)
-    var monthDifference = Math.floor(dayDifference / MONTH_DAY_AVRG)
-    
-    if (monthDifference > 12 || monthDifference < 3){
-        monthDifference = 0
-    }
-    return monthDifference
-}
 
-// Deciding if a initial payment is needed.
-function initialPayment(isInstallments){
-    if (isInstallments == "1"){
-        var initialAmount = 75
-    }else{
-        var initialAmount = 0
-    }
-    return initialAmount
-}
-
-// Calculating the rent if the tenancy is between 3 and 6 months.
-function minimumLengthRent(months, rent, rentType){
-    if (rentType == "1"){
-        rent = rent
-    }else{
-        rent = rent * 4.333
-
-    }
-    if (months >= 3 && months <=6){
-        newRent = rent / 2
-    }else if (months > 12 || months < 3 ){
-        newRent = 0
-    }else{
-        newRent = rent
-    }
-    return newRent
-}
-
-// Calculating the discount on the rent if the applicant is a student.
-function discountCalculation(type, rent){
-    if (type == "1"){
-        discountAmount = rent * 0.20
-    }else{
-        discountAmount = rent * 0.00
-    }
-    return discountAmount
-}
-
-// Calculating the minimum fee for the applicant based on their rent and discount if applicable.
-function minimumFee(rent, discount){
-    if (rent - discountAmount < 295){
-        fee = 295
-    }else{
-        fee = rent - discount
-    }
-    feeAfterDiscount = fee
-
-    return {fee, feeAfterDiscount}
-}
-
-
-// Calculating the increase if the applicant will pay in installments.
-function installmentsIncrease(isInstallments, fee, isVonder){
-    var INSTALLMENTS_RATE = 0.15
-    if (isVonder == "1"){
-        INSTALLMENTS_RATE = 0.00
-        console.log(INSTALLMENTS_RATE, "done")
-    }
-    if (isInstallments == "1"){
-        console.log(INSTALLMENTS_RATE)
-        var newFee = fee + (fee * INSTALLMENTS_RATE)
-        var amountIncreased = fee * INSTALLMENTS_RATE
-    }else{
-        var newFee = fee
-        var amountIncreased = 0
-    }
-    return {newFee, amountIncreased}
-}
-
-
-// Calculating the installments
-function installmentsCalculation(isInstallments, fee, months, initialPayment){
-    if (isInstallments == "1"){
-            var feeLeft = fee - initialPayment
-            var installmentAmount = feeLeft / months
-    }else{
-        var feeLeft = fee
-        var installmentAmount = feeLeft
-    }
-    return {feeLeft, installmentAmount}
-}
 
 module.exports = router
