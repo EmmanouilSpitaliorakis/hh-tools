@@ -2,9 +2,11 @@ const express = require("express")
 const router = express.Router()
 
 
+islogged = false
+
 router.get("/", (req, res) =>{
-    res.render("rota", {
-        islogged: true,
+    res.render("login",{
+        islogged: islogged
     })
 })
 

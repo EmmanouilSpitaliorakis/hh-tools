@@ -3,7 +3,9 @@ const router = express.Router()
 const path = require("path")
 const excel = require("excel4node")
 const { colorScheme } = require("excel4node/distribution/lib/types")
+const { isContext } = require("vm")
 
+let islogged = true
 const workbook = new excel.Workbook()
 const sheet = workbook.addWorksheet("Fee Calculation")
 
@@ -22,7 +24,9 @@ var applicant = {
 
 router.get("/", (req, res) =>{
 
-    res.render("fee_calculator")
+    res.render("fee_calculator", {
+        islogged: true,
+    })
 
 })
 
@@ -45,6 +49,7 @@ router.post("/", async (req, res)=>{
         start_date: new Date(req.body.start_date),
         end_date: new Date(req.body.end_date),
         isInstallments: req.body.isInstallments,
+        isVonder: req.body.isVonder,
         type: req.body.type,
         rentType: req.body.rentType,
         email: req.body.email
@@ -52,6 +57,7 @@ router.post("/", async (req, res)=>{
     
     var reference = applicant.reference
     var email = applicant.email
+    var isVonder = applicant.isVonder
     var months = monthCalculation(applicant.start_date, applicant.end_date)
     var start_date = applicant.start_date
     var end_date = applicant.end_date
@@ -61,8 +67,8 @@ router.post("/", async (req, res)=>{
     var discount = discountCalculation(applicant.type, newRent)
     var feeAfterDiscount = minimumFee(newRent, discount).feeAfterDiscount
     var fee = minimumFee(newRent, discount).fee
-    var amountIncreased = installmentsIncrease(applicant.isInstallments, fee).amountIncreased
-    var fee = installmentsIncrease(applicant.isInstallments, fee).newFee
+    var amountIncreased = installmentsIncrease(applicant.isInstallments, fee, isVonder).amountIncreased
+    var fee = installmentsIncrease(applicant.isInstallments, fee, isVonder).newFee
     var feeLeft = installmentsCalculation(applicant.isInstallments, fee, months, initialAmount).feeLeft
     var installmentAmount = installmentsCalculation(applicant.isInstallments, fee, months, initialAmount).installmentAmount
     
@@ -97,6 +103,7 @@ router.post("/", async (req, res)=>{
     // res.redirect("fee_calculator/api/download")
     
     res.render("fee_calculator", {
+        islogged: true,
         start_date: start_date,
         end_date: end_date,
         reference: reference,
@@ -178,9 +185,14 @@ function minimumFee(rent, discount){
 
 
 // Calculating the increase if the applicant will pay in installments.
-function installmentsIncrease(isInstallments, fee){
-    const INSTALLMENTS_RATE = 0.15
+function installmentsIncrease(isInstallments, fee, isVonder){
+    var INSTALLMENTS_RATE = 0.15
+    if (isVonder == "1"){
+        INSTALLMENTS_RATE = 0.00
+        console.log(INSTALLMENTS_RATE, "done")
+    }
     if (isInstallments == "1"){
+        console.log(INSTALLMENTS_RATE)
         var newFee = fee + (fee * INSTALLMENTS_RATE)
         var amountIncreased = fee * INSTALLMENTS_RATE
     }else{
@@ -194,8 +206,8 @@ function installmentsIncrease(isInstallments, fee){
 // Calculating the installments
 function installmentsCalculation(isInstallments, fee, months, initialPayment){
     if (isInstallments == "1"){
-        var feeLeft = fee - initialPayment
-        var installmentAmount = feeLeft / months 
+            var feeLeft = fee - initialPayment
+            var installmentAmount = feeLeft / months
     }else{
         var feeLeft = fee
         var installmentAmount = feeLeft
