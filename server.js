@@ -3,16 +3,19 @@ const expressLayouts = require("express-ejs-layouts")
 // const mongoose = require("mongoose");
 require("dotenv").config();
 
+
+// Route Imports 
 const indexRouter = require("./routes/index")
 const feeCalculatorRouter = require("./routes/fee_calculator")
 const rotaRouter = require("./routes/rota")
 const loginRouter = require("./routes/login")
 const depositlessRouter = require("./routes/depositless")
 
+
+
+// Middleware
 const app = express()
 const port = process.env.PORT || 8080;
-
-
 app.set("view engine", "ejs")
 app.set("views", __dirname + "/views")
 app.set("layout", "layouts/layout")
@@ -32,6 +35,7 @@ app.use(express.static("public"))
 // })
 
 
+// Routes
 app.use("/", indexRouter)
 app.use("/fee_calculator", feeCalculatorRouter)
 app.use("/rota", rotaRouter)
