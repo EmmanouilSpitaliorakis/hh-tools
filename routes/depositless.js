@@ -33,7 +33,7 @@ function installmentsCalculation(rent, duration){
     subscription_total = depositlessFee - UPFRONT_COST
     monthlyInstallment = subscription_total / duration
 
-    return monthlyInstallment
+    return {depositlessFee, monthlyInstallment}
 }
 
 
@@ -60,7 +60,8 @@ router.post("/", (req, res) =>{
     const rentType = applicant.rentType
     const rent = rentCalculation(applicant.rent, rentType)
     const duration = monthCalculation(start_date, end_date)
-    const installmentAmount = installmentsCalculation(rent, duration)
+    const depositlessFee = installmentsCalculation(rent, duration).depositlessFee
+    const installmentAmount = installmentsCalculation(rent, duration).monthlyInstallment
 
 
     res.render("depositless",{
@@ -71,6 +72,7 @@ router.post("/", (req, res) =>{
         end_date: end_date,
         rent: rent,
         duration: duration,
+        depositlessFee: depositlessFee,
         installmentAmount: installmentAmount
     })
 })
