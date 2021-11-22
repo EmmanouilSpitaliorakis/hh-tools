@@ -120,6 +120,7 @@ router.get("/", (req, res) =>{
 
     res.render("fee_calculator", {
         islogged: true,
+        title: "Fee Calculator",
     })
 
 })
@@ -198,6 +199,7 @@ router.post("/", (req, res)=>{
     
     res.render("fee_calculator", {
         islogged: true,
+        title: "Fee Calculator",
         start_date: start_date,
         end_date: end_date,
         reference: reference,

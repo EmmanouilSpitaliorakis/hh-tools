@@ -1,6 +1,6 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts")
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
 
@@ -25,9 +25,9 @@ app.use(express.urlencoded({limit: "10mb", extended: false}))
 app.use(expressLayouts)
 app.use(express.static("public"))
 
-// const uri = process.env.MONGO_URI
+const uri = process.env.MONGO_URI
 
-// mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true})
+// await mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true})
 // const connection = mongoose.connection
 
 // connection.once("open", ()=>{

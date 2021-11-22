@@ -40,6 +40,7 @@ function installmentsCalculation(rent, duration){
 router.get("/", (req, res) =>{
     res.render("depositless", {
         islogged: true,
+        title: "Depositless",
     })
 })
 
@@ -66,6 +67,7 @@ router.post("/", (req, res) =>{
 
     res.render("depositless",{
         islogged: true,
+        title: "Depositless",
         reference: reference,
         email: email,
         start_date: start_date,

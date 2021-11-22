@@ -6,7 +6,8 @@ islogged = false
 
 router.get("/", (req, res) =>{
     res.render("login",{
-        islogged: islogged
+        islogged: islogged,
+        title: "Login"
     })
 })
 
