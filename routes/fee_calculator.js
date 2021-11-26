@@ -153,6 +153,7 @@ router.post("/", (req, res)=>{
     var reference = applicant.reference
     var email = applicant.email
     var isVonder = applicant.isVonder
+    var isInstallments = applicant.isInstallments
     var months = monthCalculation(applicant.start_date, applicant.end_date)
     var start_date = applicant.start_date
     var end_date = applicant.end_date
@@ -200,6 +201,7 @@ router.post("/", (req, res)=>{
     res.render("fee_calculator", {
         islogged: true,
         title: "Fee Calculator",
+        isInstallments: isInstallments,
         start_date: start_date,
         end_date: end_date,
         reference: reference,
