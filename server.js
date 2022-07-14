@@ -27,20 +27,12 @@ app.use(express.static("public"))
 
 const uri = process.env.MONGO_URI
 
-// await mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true})
-// const connection = mongoose.connection
-
-// connection.once("open", ()=>{
-//     console.log("MongoFB database conneciton establish successfully")
-// })
-
-
 // Routes
 app.use("/", indexRouter)
 app.use("/fee_calculator", feeCalculatorRouter)
 app.use("/rota", rotaRouter)
 app.use("/login", loginRouter)
-app.use("/depositless", depositlessRouter)
+// app.use("/depositless", depositlessRouter)
 
 app.listen(port);
 console.log('\nServer started at http://localhost:' + port);
