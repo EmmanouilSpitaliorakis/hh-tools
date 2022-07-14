@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "This is the server side of the hh-tool website.",
   "main": "index.js",
+  "engines": {
+    "npm": "8.6.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
